@@ -13,10 +13,10 @@
     --parchment: #FFFDF7;
     --ink: #3B2F1E;
     --ink-soft: #7A6B55;
-    --accent: #4A7C59;
-    --accent-soft: #E5F5EC;
+    --accent: #2D7D9A;
+    --accent-soft: #E3F2F8;
     --coral: #E07A5F;
-    --blue: #2D7D9A;
+    --green: #4A9B6A;
     --shadow: rgba(59,47,30,0.1);
   }
 
@@ -30,7 +30,7 @@
     padding: 1.5rem;
     background-image:
       radial-gradient(ellipse at 15% 85%, rgba(212,160,23,0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 85% 15%, rgba(74,124,89,0.05) 0%, transparent 50%);
+      radial-gradient(ellipse at 85% 15%, rgba(45,125,154,0.04) 0%, transparent 50%);
   }
 
   .page { max-width: 560px; margin: 0 auto; }
@@ -64,7 +64,7 @@
   }
 
   .header h1 span {
-    background: linear-gradient(135deg, var(--accent), #6AAF7A);
+    background: linear-gradient(135deg, var(--accent), #5BB0C8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -87,23 +87,22 @@
   /* ── Stats bar ── */
   .stats-bar {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 0.6rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.8rem;
     margin-bottom: 1.5rem;
   }
 
   .stat-card {
     background: white;
     border-radius: 12px;
-    padding: 0.7rem 0.5rem;
+    padding: 0.8rem;
     text-align: center;
     box-shadow: 0 2px 8px var(--shadow);
   }
 
-  .stat-card .stat-icon { font-size: 1.2rem; margin-bottom: 0.15rem; }
-  .stat-card .stat-value { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
-  .stat-card .stat-label { font-size: 0.65rem; color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-  .stat-card:nth-child(2) .stat-value { color: var(--blue); }
+  .stat-card .stat-icon { font-size: 1.3rem; margin-bottom: 0.2rem; }
+  .stat-card .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+  .stat-card .stat-label { font-size: 0.7rem; color: var(--ink-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
 
   /* ── Entry form ── */
   .entry-form {
@@ -174,7 +173,10 @@
     min-width: 70px;
   }
 
-  .mood-options { display: flex; gap: 0.3rem; }
+  .mood-options {
+    display: flex;
+    gap: 0.3rem;
+  }
 
   .mood-btn {
     width: 38px;
@@ -203,7 +205,7 @@
     padding: 0.7rem;
     border: none;
     border-radius: 10px;
-    background: linear-gradient(135deg, var(--accent), #5EAA72);
+    background: linear-gradient(135deg, var(--accent), #4BA0BD);
     color: white;
     font-family: 'Nunito', sans-serif;
     font-weight: 800;
@@ -216,7 +218,7 @@
     gap: 0.4rem;
   }
 
-  .btn-save:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(74,124,89,0.4); }
+  .btn-save:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(45,125,154,0.4); }
 
   /* ── Log table ── */
   .log-section {
@@ -252,27 +254,26 @@
   }
 
   .log-table th {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 800;
     color: var(--ink-soft);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     text-align: left;
-    padding: 0.3rem 0.5rem;
+    padding: 0.3rem 0.6rem;
   }
 
   .log-table td {
     background: var(--parchment);
-    padding: 0.55rem 0.5rem;
-    font-size: 0.82rem;
+    padding: 0.6rem;
+    font-size: 0.85rem;
     font-weight: 600;
   }
 
   .log-table tr td:first-child { border-radius: 8px 0 0 8px; }
   .log-table tr td:last-child { border-radius: 0 8px 8px 0; }
 
-  .log-table .min-app { color: var(--accent); font-weight: 800; }
-  .log-table .min-read { color: var(--blue); font-weight: 800; }
+  .log-table .minutes { color: var(--accent); font-weight: 800; }
   .log-table .mood-cell { font-size: 1.1rem; text-align: center; }
 
   .delete-btn {
@@ -313,6 +314,7 @@
   }
 
   .btn-action:hover { border-color: var(--gold); background: var(--gold-glow); }
+
   .btn-action.danger:hover { border-color: var(--coral); color: var(--coral); background: #FFF0EB; }
 
   footer {
@@ -341,6 +343,7 @@
   .cloud-status.offline { background: #FFF3E0; color: #C77700; }
   .cloud-status.error { background: #FFE8E5; color: var(--coral); }
 
+  /* ── Print ── */
   @media print {
     body { background: white; padding: 0.5cm; }
     .entry-form, .actions, .cloud-status { display: none !important; }
@@ -363,12 +366,7 @@
     <div class="stat-card">
       <div class="stat-icon">📱</div>
       <div class="stat-value" id="statWeekApp">0</div>
-      <div class="stat-label">App Min/Woche</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon">📖</div>
-      <div class="stat-value" id="statWeekRead">0</div>
-      <div class="stat-label">Lesen Min/Woche</div>
+      <div class="stat-label">Min diese Woche</div>
     </div>
     <div class="stat-card">
       <div class="stat-icon">🔥</div>
@@ -378,7 +376,7 @@
     <div class="stat-card">
       <div class="stat-icon">📊</div>
       <div class="stat-value" id="statTotal">0</div>
-      <div class="stat-label">Einträge</div>
+      <div class="stat-label">Einträge gesamt</div>
     </div>
   </div>
 
@@ -391,10 +389,6 @@
     <div class="form-row">
       <label>📱 App</label>
       <input type="number" id="entryApp" min="0" max="120" placeholder="Minuten" />
-    </div>
-    <div class="form-row">
-      <label>📖 Lesen</label>
-      <input type="number" id="entryRead" min="0" max="120" placeholder="Minuten" />
     </div>
     <div class="mood-row">
       <label>😊 Stimmung</label>
@@ -429,12 +423,13 @@
 // KONFIGURATION: Hier die URL deiner Google Apps Script Web-App eintragen
 // ════════════════════════════════════════════════════
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwUXthlkj_qnzdzrxiyzeFmhpd_awHtZ6WegyfJGvYmbb54ln7tHbsbtxuNkT5dltU/exec';
-const SHEET_NAME = 'Kind2';
+const SHEET_NAME = 'Eden';
 // ════════════════════════════════════════════════════
 
-const STORAGE_KEY = 'schatzkarte_tagebuch_kind2';
+const STORAGE_KEY = 'schatzkarte_tagebuch_eden';
 let selectedMood = null;
 
+// ── Init ──
 document.getElementById('entryDate').valueAsDate = new Date();
 loadName();
 render();
@@ -490,7 +485,9 @@ async function syncFromCloud() {
     const cloudEntries = data.entries;
 
     const merged = new Map();
+    // Cloud first (takes priority)
     cloudEntries.forEach(e => merged.set(e.date, e));
+    // Local entries only if date not in cloud
     localEntries.forEach(e => { if (!merged.has(e.date)) merged.set(e.date, e); });
 
     const result = Array.from(merged.values()).sort((a, b) => b.date.localeCompare(a.date));
@@ -537,28 +534,31 @@ function saveEntries(entries) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
 }
 
+// ── Mood ──
 function pickMood(btn) {
   document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   selectedMood = btn.dataset.mood;
 }
 
+// ── Save ──
 function saveEntry() {
   const date = document.getElementById('entryDate').value;
   const app = parseInt(document.getElementById('entryApp').value) || 0;
-  const read = parseInt(document.getElementById('entryRead').value) || 0;
 
   if (!date) { alert('Bitte Datum auswählen!'); return; }
-  if (app === 0 && read === 0 && !selectedMood) { alert('Bitte mindestens Minuten oder Stimmung eintragen!'); return; }
+  if (app === 0 && !selectedMood) { alert('Bitte mindestens App-Minuten oder Stimmung eintragen!'); return; }
 
   const entries = getEntries();
+
+  // Check for duplicate date
   const existing = entries.findIndex(e => e.date === date);
   if (existing >= 0) {
     if (!confirm('Es gibt schon einen Eintrag für dieses Datum. Überschreiben?')) return;
     entries.splice(existing, 1);
   }
 
-  const entry = { date, app, read, mood: selectedMood || '–', id: Date.now() };
+  const entry = { date, app, mood: selectedMood || '–', id: Date.now() };
   entries.push(entry);
   entries.sort((a, b) => b.date.localeCompare(a.date));
   saveEntries(entries);
@@ -566,14 +566,15 @@ function saveEntry() {
   // Cloud save
   cloudPost({ action: 'save', entry });
 
+  // Reset form
   document.getElementById('entryApp').value = '';
-  document.getElementById('entryRead').value = '';
   document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
   selectedMood = null;
 
   render();
 }
 
+// ── Delete ──
 function deleteEntry(id) {
   if (!confirm('Eintrag löschen?')) return;
   const entries = getEntries().filter(e => e.id !== id);
@@ -582,26 +583,32 @@ function deleteEntry(id) {
   render();
 }
 
+// ── Render ──
 function render() {
   const entries = getEntries();
   const container = document.getElementById('logContent');
 
-  // Week stats
+  // Stats
   const now = new Date();
   const weekStart = new Date(now);
-  weekStart.setDate(now.getDate() - now.getDay() + 1);
+  weekStart.setDate(now.getDate() - now.getDay() + 1); // Monday
   const weekKey = weekStart.toISOString().slice(0, 10);
-  const weekEntries = entries.filter(e => e.date >= weekKey);
 
-  document.getElementById('statWeekApp').textContent = weekEntries.reduce((s, e) => s + (e.app || 0), 0);
-  document.getElementById('statWeekRead').textContent = weekEntries.reduce((s, e) => s + (e.read || 0), 0);
+  const weekApp = entries
+    .filter(e => e.date >= weekKey)
+    .reduce((s, e) => s + (e.app || 0), 0);
+
+  document.getElementById('statWeekApp').textContent = weekApp;
   document.getElementById('statTotal').textContent = entries.length;
 
   // Streak
   let streak = 0;
-  const today = new Date(); today.setHours(0,0,0,0);
+  const today = new Date();
+  today.setHours(0,0,0,0);
   const checkDate = new Date(today);
   const dateSet = new Set(entries.map(e => e.date));
+
+  // Check if today or yesterday has an entry to start
   if (!dateSet.has(checkDate.toISOString().slice(0,10))) {
     checkDate.setDate(checkDate.getDate() - 1);
   }
@@ -618,15 +625,14 @@ function render() {
   }
 
   let html = `<table class="log-table">
-    <thead><tr><th>Datum</th><th>App</th><th>Lesen</th><th>Stimmung</th><th></th></tr></thead><tbody>`;
+    <thead><tr><th>Datum</th><th>App</th><th>Stimmung</th><th></th></tr></thead><tbody>`;
 
   entries.forEach(e => {
     const d = new Date(e.date);
     const dayStr = d.toLocaleDateString('de-DE', { weekday: 'short', day: 'numeric', month: 'short' });
     html += `<tr>
       <td>${dayStr}</td>
-      <td class="min-app">${e.app || 0} Min</td>
-      <td class="min-read">${e.read || 0} Min</td>
+      <td class="minutes">${e.app || 0} Min</td>
       <td class="mood-cell">${e.mood}</td>
       <td><button class="delete-btn" onclick="deleteEntry(${e.id})">✕</button></td>
     </tr>`;
@@ -636,6 +642,7 @@ function render() {
   container.innerHTML = html;
 }
 
+// ── Export / Import ──
 function exportJSON() {
   const data = {
     name: localStorage.getItem(STORAGE_KEY + '_name') || 'Kind',
@@ -664,6 +671,7 @@ function importJSON(event) {
           document.getElementById('childNameDisplay').textContent = data.name;
         }
         render();
+        // Push all imported entries to cloud
         data.entries.forEach(entry => cloudPost({ action: 'save', entry }));
         alert('Import erfolgreich! ✅');
       } else {
